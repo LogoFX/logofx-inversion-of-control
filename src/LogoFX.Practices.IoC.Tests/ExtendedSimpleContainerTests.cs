@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
+using Solid.Practices.IoC;
 
 namespace LogoFX.Practices.IoC.Tests
 {   
@@ -50,5 +52,22 @@ namespace LogoFX.Practices.IoC.Tests
             CollectionAssert.AreEqual(modules, actualModules);
         }
 
+        [Ignore("check later")]
+        public void
+            GivenThereIsLifetimeProvider_WhenDependencyIsRegisteredPerLifetimeAndLifetimeProviderBecomesNull_TheDependencyBecomesNull
+            ()
+        {
+            var @object = string.Empty;
+            LifetimeProvider.Current = @object;
+            
+            var container = new ExtendedSimpleContainer();
+            ((IIocContainerScoped) container).RegisterScoped(() => LifetimeProvider.Current, typeof (ITestModule),
+                typeof (TestModule));            
+
+            container.GetInstance(typeof (ITestModule), null);            
+            LifetimeProvider.Current = null;
+            var dependency = container.GetInstance(typeof (ITestModule), null);
+            Assert.IsNull(dependency);
+        }
     }
 }
