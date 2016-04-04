@@ -52,7 +52,7 @@ namespace LogoFX.Practices.IoC
         /// <param name="bootstrapper">The bootstrapper.</param>
         /// <param name="lifetimeScopeProvider">The lifetime scope provider.</param>
         public static IBootstrapperWithContainer<TRootViewModel, ExtendedSimpleContainerAdapter, ExtendedSimpleContainer>
-            UseLifetimeScope<TRootViewModel>(
+            UseSimpleCompositionModules<TRootViewModel>(
             this IBootstrapperWithContainer<TRootViewModel, ExtendedSimpleContainerAdapter, ExtendedSimpleContainer> bootstrapper,
             Func<object> lifetimeScopeProvider)
         {
