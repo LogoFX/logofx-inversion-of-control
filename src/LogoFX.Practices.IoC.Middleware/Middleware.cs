@@ -46,7 +46,7 @@ namespace LogoFX.Practices.IoC
     public static class BootstrapperExtensions
     {
         /// <summary>
-        /// Uses the view model factory which is based on LogoFX Simple Container.
+        /// Uses middleware which registers simple composition modules.
         /// </summary>
         /// <typeparam name="TRootViewModel">The type of the root view model.</typeparam>
         /// <param name="bootstrapper">The bootstrapper.</param>
