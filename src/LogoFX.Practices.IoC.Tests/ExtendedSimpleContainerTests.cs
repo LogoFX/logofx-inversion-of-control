@@ -1,5 +1,4 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using Solid.Practices.IoC;
 
 namespace LogoFX.Practices.IoC.Tests

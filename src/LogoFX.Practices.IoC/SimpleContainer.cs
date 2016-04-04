@@ -3,14 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Solid.Practices.IoC;
 
 namespace LogoFX.Practices.IoC
 {
     /// <summary>
     ///  A simple IoC container.
     /// </summary>
-    public class SimpleContainer : IDisposable, IIocContainerScoped
+    public class SimpleContainer : IDisposable
     {
         #region Nested Types
 
@@ -383,21 +382,6 @@ namespace LogoFX.Practices.IoC
         public virtual void Dispose()
         {
             
-        }
-
-        void IIocContainerScoped.RegisterScoped(Func<object> lifetimeProvider, Type service, Type implementation)
-        {
-            RegisterPerLifetime(lifetimeProvider, service, null, implementation);
-        }
-
-        void IIocContainerScoped.RegisterScoped<TService, TImplementation>(Func<object> lifetimeProvider)
-        {
-            RegisterPerLifetime(lifetimeProvider, typeof(TService), null, typeof(TImplementation));
-        }
-
-        void IIocContainerScoped.RegisterScoped<TService>(Func<object> lifetimeProvider)
-        {
-            RegisterPerLifetime(lifetimeProvider, typeof(TService), null, typeof(TService));
-        }
+        }       
     }
 }
