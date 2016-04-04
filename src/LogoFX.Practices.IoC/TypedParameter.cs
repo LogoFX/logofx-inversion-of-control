@@ -3,7 +3,7 @@ using System;
 namespace LogoFX.Practices.IoC
 {
     /// <summary>
-    /// Represents typed parameter for dependency resolution
+    /// Represents typed parameter for dependency resolution.
     /// </summary>
     public class TypedParameter : IParameter
     {

@@ -5,7 +5,7 @@ using System.Reflection;
 namespace LogoFX.Practices.IoC
 {
     /// <summary>
-    /// Represents <see cref="SimpleContainer" /> with advanced capabilities
+    /// Represents <see cref="SimpleContainer" /> with advanced capabilities.
     /// </summary>
     public class ExtendedSimpleContainer : SimpleContainer
     {

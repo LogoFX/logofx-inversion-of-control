@@ -1,7 +1,7 @@
 ﻿namespace LogoFX.Practices.IoC
 {
     /// <summary>
-    /// Represents named parameter for dependency resolution
+    /// Represents named parameter for dependency resolution.
     /// </summary>
     public class NamedParameter : IParameter
     {
