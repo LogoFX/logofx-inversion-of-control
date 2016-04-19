@@ -8,15 +8,14 @@ namespace LogoFX.Practices.IoC
 {
     /// <summary>
     /// Middleware that registers simple composition modules.
-    /// </summary>
-    /// <typeparam name="TRootObject">The type of the root object.</typeparam>    
-    public class RegisterSimpleCompositionModulesMiddleware<TRootObject> :
-        IMiddleware<IBootstrapperWithContainer<TRootObject, ExtendedSimpleContainerAdapter, ExtendedSimpleContainer>>
+    /// </summary>    
+    public class RegisterSimpleCompositionModulesMiddleware :
+        IMiddleware<IBootstrapperWithContainer<ExtendedSimpleContainerAdapter, ExtendedSimpleContainer>>
     {
         private readonly Func<object> _lifetimeProvider;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RegisterSimpleCompositionModulesMiddleware{TRootObject}"/> class.
+        /// Initializes a new instance of the <see cref="RegisterSimpleCompositionModulesMiddleware"/> class.
         /// </summary>
         /// <param name="lifetimeProvider">The lifetime provider.</param>
         public RegisterSimpleCompositionModulesMiddleware(Func<object> lifetimeProvider)
@@ -29,8 +28,8 @@ namespace LogoFX.Practices.IoC
         /// </summary>
         /// <param name="object">The object.</param>
         /// <returns></returns>
-        public IBootstrapperWithContainer<TRootObject, ExtendedSimpleContainerAdapter, ExtendedSimpleContainer>
-            Apply(IBootstrapperWithContainer<TRootObject, ExtendedSimpleContainerAdapter, ExtendedSimpleContainer> @object)
+        public IBootstrapperWithContainer<ExtendedSimpleContainerAdapter, ExtendedSimpleContainer>
+            Apply(IBootstrapperWithContainer<ExtendedSimpleContainerAdapter, ExtendedSimpleContainer> @object)
         {
             foreach (var module in @object.Modules.OfType<ISimpleCompositionModule>())
             {
@@ -47,19 +46,17 @@ namespace LogoFX.Practices.IoC
     {
         /// <summary>
         /// Uses middleware which registers simple composition modules.
-        /// </summary>
-        /// <typeparam name="TRootObject">The type of the root object.</typeparam>
+        /// </summary>        
         /// <param name="bootstrapper">The bootstrapper.</param>
         /// <param name="lifetimeScopeProvider">The lifetime scope provider.</param>
-        public static IBootstrapperWithContainer<TRootObject, ExtendedSimpleContainerAdapter, ExtendedSimpleContainer>
-            UseSimpleCompositionModules<TRootObject>(
-            this IBootstrapperWithContainer<TRootObject, ExtendedSimpleContainerAdapter, ExtendedSimpleContainer> bootstrapper,
+        public static IBootstrapperWithContainer<ExtendedSimpleContainerAdapter, ExtendedSimpleContainer>
+            UseSimpleCompositionModules(
+            this IBootstrapperWithContainer<ExtendedSimpleContainerAdapter, ExtendedSimpleContainer> bootstrapper,
             Func<object> lifetimeScopeProvider)
         {
             return
                 bootstrapper.Use(
-                    new RegisterSimpleCompositionModulesMiddleware
-                        <TRootObject>(
+                    new RegisterSimpleCompositionModulesMiddleware(
                         lifetimeScopeProvider));
         }
     }
