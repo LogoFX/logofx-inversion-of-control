@@ -10,7 +10,7 @@ namespace LogoFX.Practices.IoC
     public interface ISimpleCompositionModule : ICompositionModule
     {
         /// <summary>
-        /// Registers module.
+        /// Registers dependencies.
         /// </summary>
         /// <param name="container">The ioc container.</param>
         /// <param name="lifetimeScopeProvider">The lifetime scope provider.</param>
