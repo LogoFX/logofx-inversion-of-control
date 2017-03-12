@@ -54,15 +54,14 @@ namespace LogoFX.Practices.IoC.Tests
         public void
             GivenThereIsLifetimeProvider_WhenDependencyIsRegisteredPerLifetimeAndLifetimeProviderBecomesNull_TheDependencyBecomesNull
             ()
-        {
-            var @object = string.Empty;
-            LifetimeProvider.Current = @object;
-            
+        {                        
             var container = new ExtendedSimpleContainer();
             container.RegisterPerLifetime(() => LifetimeProvider.Current, typeof(ITestModule), null, typeof(TestModule));
-
+            var @object = string.Empty;
+            LifetimeProvider.Current = @object;
             container.GetInstance(typeof (ITestModule), null);            
             LifetimeProvider.Current = null;
+
             var dependency = container.GetInstance(typeof (ITestModule), null);
             Assert.IsNull(dependency);
         }
