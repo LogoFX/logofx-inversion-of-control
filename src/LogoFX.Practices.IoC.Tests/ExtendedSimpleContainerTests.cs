@@ -1,11 +1,11 @@
-﻿using NUnit.Framework;
+﻿using FluentAssertions;
+using Xunit;
 
 namespace LogoFX.Practices.IoC.Tests
-{   
-    [TestFixture]
-    class ExtendedSimpleContainerTests
+{       
+    public class ExtendedSimpleContainerTests
     {
-        [Test]
+        [Fact]
         public void
             GivenDependencyHasOneNamedParameter_WhenDependencyIsRegisteredAndDependencyIsResolvedWithParameter_ThenResolvedDependencyValueIsCorrect
             ()
@@ -17,10 +17,10 @@ namespace LogoFX.Practices.IoC.Tests
                 new IParameter[] {new NamedParameter("model", model)}) as ITestNamedParameterDependency;
 
             var actualModel = dependency.Model;
-            Assert.AreEqual(model, actualModel);
+            actualModel.Should().Be(model);            
         }
 
-        [Test]
+        [Fact]
         public void
             GivenDependencyHasOneTypedParameter_WhenDependencyIsRegisteredAndDependencyIsResolvedWithParameter_ThenResolvedDependencyValueIsCorrect
             ()
@@ -32,10 +32,10 @@ namespace LogoFX.Practices.IoC.Tests
                 new IParameter[] { new TypedParameter(typeof(int), val) }) as ITestTypedParameterDependency;
 
             var actualValue = dependency.Value;
-            Assert.AreEqual(val, actualValue);
+            actualValue.Should().Be(val);            
         }
 
-        [Test]
+        [Fact]
         public void
             GivenThereAreMultipleSameTypedDependencies_WhenDependencyIsRegisteredByHandlerAndDependencyIsRegisteredByHandler_ThenResolutionOfDependenciesCollectionIsCorrect
             ()
@@ -47,10 +47,10 @@ namespace LogoFX.Practices.IoC.Tests
             container.RegisterHandler(typeof(ITestModule), null, (c, r) => modules[1]);
             var actualModules = container.GetAllInstances(typeof (ITestModule));
 
-            CollectionAssert.AreEqual(modules, actualModules);
+            actualModules.ShouldAllBeEquivalentTo(modules);            
         }
         
-        [Test]
+        [Fact]
         public void
             GivenThereIsLifetimeProvider_WhenDependencyIsRegisteredPerLifetimeAndLifetimeProviderBecomesNull_TheDependencyBecomesNull
             ()
@@ -63,7 +63,7 @@ namespace LogoFX.Practices.IoC.Tests
             LifetimeProvider.Current = null;
 
             var dependency = container.GetInstance(typeof (ITestModule), null);
-            Assert.IsNull(dependency);
+            dependency.Should().BeNull();
         }
     }
 }
