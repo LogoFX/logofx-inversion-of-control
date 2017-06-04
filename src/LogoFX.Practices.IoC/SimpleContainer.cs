@@ -122,6 +122,28 @@ namespace LogoFX.Practices.IoC
             RegisterHandler(service, key, (container, args) => singleton ?? (singleton = container.BuildInstance(implementation)));
         }
 
+        /// <summary>
+        /// Registers a custom handler for resolving dependencies from the container as singleton.
+        /// </summary>
+        /// <param name="service">Type of dependency declaration</param>
+        /// <param name="key">Optional dependency key, provide null if not needed</param>
+        /// <param name="handler">Resolution handler</param>
+        public void RegisterSignleton(Type service, string key, Func<SimpleContainer, IParameter[], object> handler)
+        {
+            object singleton = null;
+            RegisterHandler(service, key, (container, args) => singleton ?? (singleton = handler(container, args)));
+        }
+
+        /// <summary>
+        /// Registers a custom handler for resolving dependencies from the container as singleton.
+        /// </summary>
+        /// <typeparam name="TService">Type of dependency declaration</typeparam>
+        /// <param name="handler">Resolution handler</param>
+        public void RegisterSignleton<TService>(Func<SimpleContainer, IParameter[], object> handler)
+        {
+            RegisterSignleton(typeof(TService), null, handler);
+        }
+
        /// <summary>
        /// Registers a custom handler for resolving dependencies from the container.
        /// </summary>
