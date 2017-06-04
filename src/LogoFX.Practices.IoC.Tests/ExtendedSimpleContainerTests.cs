@@ -1,4 +1,6 @@
-﻿using FluentAssertions;
+﻿using System;
+using FluentAssertions;
+using FluentAssertions.Common;
 using Xunit;
 
 namespace LogoFX.Practices.IoC.Tests
@@ -64,6 +66,20 @@ namespace LogoFX.Practices.IoC.Tests
 
             var dependency = container.GetInstance(typeof (ITestModule), null);
             dependency.Should().BeNull();
+        }
+
+        [Fact]
+        public void GivenDependencyHasOneNamedParameter_WhenDependencyIsRegisteredByHandlerAsSingleton_ThenSeveralResolutionOfDependenciesAreSame()
+        {
+            int counter = 0;
+
+            var container = new ExtendedSimpleContainer();
+            container.RegisterSignleton<ITestModule>((c, r) => new TestModule {Name = (++counter).ToString()});
+
+            var module = container.GetInstance(typeof(ITestModule), null);
+            var actualModule = container.GetInstance(typeof(ITestModule), null);
+
+            actualModule.Should().BeSameAs(module);
         }
     }
 }
