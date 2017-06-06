@@ -23,7 +23,7 @@ namespace LogoFX.Practices.IoC
         {
             public Func<T> Create(SimpleContainer container)
             {
-                return () => (T)container.GetInstance(typeof(T), null);
+                return () => (T) container.GetInstance(typeof(T), null);
             }
         }
 
@@ -38,6 +38,7 @@ namespace LogoFX.Practices.IoC
         #endregion
 
         #region Constructors
+
         /// <summary>
         ///   Initializes a new instance of the <see cref = "SimpleContainer" /> class.
         /// </summary>
@@ -66,26 +67,21 @@ namespace LogoFX.Practices.IoC
         {
             WeakReference wr = null;
             object singleton = null;
-            RegisterHandler(service, key,
-                            (container, args) =>
-                            {
-                                GC.Collect();
-                                if (LifetimeIsDead(wr))
-                                {
-                                    return null;
-                                }
-                                if (wr == null || !wr.IsAlive || singleton == null)
-                                {
-                                    wr = new WeakReference(lifeTime());
-                                    singleton = BuildInstance(implementation);
-                                }
-                                return singleton;
-                            });
-        }
-
-        private static bool LifetimeIsDead(WeakReference wr)
-        {
-            return wr != null && wr.IsAlive == false;
+            RegisterHandlerInternal(service, key,
+                (container, args) =>
+                {
+                    GC.Collect();
+                    if (LifetimeIsDead(wr))
+                    {
+                        return null;
+                    }
+                    if (wr == null || !wr.IsAlive || singleton == null)
+                    {
+                        wr = new WeakReference(lifeTime());
+                        singleton = BuildInstance(implementation);
+                    }
+                    return singleton;
+                });
         }
 
         /// <summary>
@@ -96,7 +92,18 @@ namespace LogoFX.Practices.IoC
         /// <param name="implementation">The instance of dependency</param>
         public void RegisterInstance(Type service, string key, object implementation)
         {
-            RegisterHandler(service, key, (container, args) => implementation);
+            RegisterHandlerInternal(service, key, (container, args) => implementation);
+        }
+
+        /// <summary>
+        /// Registers the instance of dependency
+        /// </summary>
+        /// <typeparam name="TService">Type of dependency</typeparam>
+        /// <param name="key">Optional dependency key, provide null if not needed</param>
+        /// <param name="implementation">The instance of dependency</param>
+        public void RegisterInstance<TService>(string key, object implementation)
+        {
+            RegisterHandlerInternal(typeof(TService), key, (container, args) => implementation);
         }
 
         /// <summary>
@@ -107,7 +114,18 @@ namespace LogoFX.Practices.IoC
         /// <param name="implementation">Type of dependency implementation</param>
         public void RegisterPerRequest(Type service, string key, Type implementation)
         {
-            RegisterHandler(service, key, (container, args) => container.BuildInstance(implementation, args));
+            RegisterHandlerInternal(service, key, (container, args) => container.BuildInstance(implementation, args));
+        }
+
+        /// <summary>
+        /// Registers the dependency so that a new instance is created on every request.
+        /// </summary>
+        /// <typeparam name="TService">Type of dependency declaration</typeparam>
+        /// <param name="key">Optional dependency key, provide null if not needed</param>
+        /// <param name="implementation">Type of dependency implementation</param>
+        public void RegisterPerRequest<TService>(string key, Type implementation)
+        {
+            RegisterHandlerInternal(typeof(TService), key, (container, args) => container.BuildInstance(implementation, args));
         }
 
         /// <summary>
@@ -118,8 +136,7 @@ namespace LogoFX.Practices.IoC
         /// <param name="implementation">Type of dependency implementation</param>
         public void RegisterSingleton(Type service, string key, Type implementation)
         {
-            object singleton = null;
-            RegisterHandler(service, key, (container, args) => singleton ?? (singleton = container.BuildInstance(implementation)));
+            RegisterSingletonInternal(service, key, (container, args) => container.BuildInstance(implementation));
         }
 
         /// <summary>
@@ -128,10 +145,9 @@ namespace LogoFX.Practices.IoC
         /// <param name="service">Type of dependency declaration</param>
         /// <param name="key">Optional dependency key, provide null if not needed</param>
         /// <param name="handler">Resolution handler</param>
-        public void RegisterSignleton(Type service, string key, Func<SimpleContainer, IParameter[], object> handler)
+        public void RegisterSingleton(Type service, string key, Func<SimpleContainer, IParameter[], object> handler)
         {
-            object singleton = null;
-            RegisterHandler(service, key, (container, args) => singleton ?? (singleton = handler(container, args)));
+            RegisterSingletonInternal(service, key, handler);
         }
 
         /// <summary>
@@ -139,20 +155,31 @@ namespace LogoFX.Practices.IoC
         /// </summary>
         /// <typeparam name="TService">Type of dependency declaration</typeparam>
         /// <param name="handler">Resolution handler</param>
-        public void RegisterSignleton<TService>(Func<SimpleContainer, IParameter[], object> handler)
+        public void RegisterSingleton<TService>(Func<SimpleContainer, IParameter[], object> handler)
         {
-            RegisterSignleton(typeof(TService), null, handler);
+            RegisterSingletonInternal(typeof(TService), null, handler);
         }
 
-       /// <summary>
-       /// Registers a custom handler for resolving dependencies from the container.
-       /// </summary>
-       /// <param name="service">Type of dependency declaration</param>
-       /// <param name="key">Optional dependency key, provide null if not needed</param>
-       /// <param name="handler">Resolution handler</param>
+        /// <summary>
+        /// Registers a custom handler for resolving dependencies from the container.
+        /// </summary>
+        /// <param name="service">Type of dependency declaration</param>
+        /// <param name="key">Optional dependency key, provide null if not needed</param>
+        /// <param name="handler">Resolution handler</param>
         public void RegisterHandler(Type service, string key, Func<SimpleContainer, IParameter[], object> handler)
         {
-            GetOrCreateEntry(service, key).Add(handler);
+            RegisterHandlerInternal(service, key, handler);
+        }
+
+        /// <summary>
+        /// Registers a custom handler for resolving dependencies from the container.
+        /// </summary>
+        /// <typeparam name="TService">Type of dependency declaration</typeparam>
+        /// <param name="key">Optional dependency key, provide null if not needed</param>
+        /// <param name="handler">Resolution handler</param>
+        public void RegisterHandler<TService>(string key, Func<SimpleContainer, IParameter[], object> handler)
+        {
+            RegisterHandlerInternal(typeof(TService), key, handler);
         }
 
         /// <summary>
@@ -161,50 +188,9 @@ namespace LogoFX.Practices.IoC
         /// <param name="service">Type of dependency</param>
         /// <param name="key">Optional dependency key, provide null if not needed</param>
         /// <returns>True if a handler is registered, false otherwise.</returns>
-        public bool HasHandler(Type service, string key)
+        public bool HasHandler(Type service, string key = null)
         {
             return GetEntry(service, key) != null;
-        }
-
-        /// <summary>
-        /// Resolves the dependency by its type/key
-        /// </summary>
-        /// <param name="service">Type of dependency</param>
-        /// <param name="key">Optional dependency key, provide null if not needed</param>
-        /// <returns>The instance of dependency, or null if it cannot be resolved</returns>
-        public object GetInstance(Type service, string key)
-        {
-            var entry = GetEntry(service, key);
-            if (entry != null)
-            {
-                //last registration always wins - this is a convention amongst ioc containers
-                return entry.Last()(this, null);
-            }
-            var serviceTypeInfo = service.GetTypeInfo();
-            if (s_delegateType.IsAssignableFrom(serviceTypeInfo))
-            {
-                var typeToCreate = serviceTypeInfo.GenericTypeArguments[0];
-                var factoryFactoryType = typeof(FactoryFactory<>).MakeGenericType(typeToCreate);
-                var factoryFactoryHost = Activator.CreateInstance(factoryFactoryType);
-                var factoryFactoryMethod = factoryFactoryType.GetTypeInfo().GetDeclaredMethod("Create");
-                return factoryFactoryMethod.Invoke(factoryFactoryHost, new object[] { this });
-            }
-
-            if (s_enumerableType.IsAssignableFrom(serviceTypeInfo))
-            {
-                var listType = serviceTypeInfo.GenericTypeArguments[0];
-                var instances = GetAllInstances(listType).ToList();
-                var array = Array.CreateInstance(listType, instances.Count);
-
-                for (var i = 0; i < array.Length; i++)
-                {
-                    array.SetValue(instances[i], i);
-                }
-
-                return array;
-            }
-
-            return null;
         }
 
         /// <summary>
@@ -214,7 +200,7 @@ namespace LogoFX.Practices.IoC
         /// <param name="key">Optional dependency key, provide null if not needed</param>
         /// <param name="parameters">optional dynamically injected resolution parameters</param>
         /// <returns>The instance of dependency, or null if it cannot be resolved</returns>
-        public object GetInstance(Type service, string key, params IParameter[] parameters)
+        public object GetInstance(Type service, string key = null, params IParameter[] parameters)
         {
             var entry = GetEntry(service, key);
             if (entry != null)
@@ -229,7 +215,7 @@ namespace LogoFX.Practices.IoC
                 var factoryFactoryType = typeof(FactoryFactory<>).MakeGenericType(typeToCreate);
                 var factoryFactoryHost = Activator.CreateInstance(factoryFactoryType);
                 var factoryFactoryMethod = factoryFactoryType.GetTypeInfo().GetDeclaredMethod("Create");
-                return factoryFactoryMethod.Invoke(factoryFactoryHost, new object[] { this });
+                return factoryFactoryMethod.Invoke(factoryFactoryHost, new object[] {this});
             }
 
             if (s_enumerableType.IsAssignableFrom(serviceTypeInfo))
@@ -267,8 +253,9 @@ namespace LogoFX.Practices.IoC
         public void BuildUp(object instance)
         {
             var injectables = instance.GetType().GetTypeInfo()
-                            .DeclaredProperties
-                            .Where(property => property.CanRead && property.CanWrite && property.PropertyType.GetTypeInfo().IsInterface);
+                .DeclaredProperties
+                .Where(property => property.CanRead && property.CanWrite &&
+                                   property.PropertyType.GetTypeInfo().IsInterface);
 
             foreach (var propertyInfo in injectables)
             {
@@ -331,12 +318,31 @@ namespace LogoFX.Practices.IoC
 
         #region Private Members
 
+        private void RegisterHandlerInternal(Type service, string key,
+            Func<SimpleContainer, IParameter[], object> handler)
+        {
+            GetOrCreateEntry(service, key).Add(handler);
+        }
+
+        private void RegisterSingletonInternal(Type service, string key,
+            Func<SimpleContainer, IParameter[], object> handler)
+        {
+            object singleton = null;
+            RegisterHandlerInternal(service, key,
+                (container, args) => singleton ?? (singleton = handler(container, args)));
+        }
+
+        private static bool LifetimeIsDead(WeakReference wr)
+        {
+            return wr != null && wr.IsAlive == false;
+        }
+
         private ContainerEntry GetOrCreateEntry(Type service, string key)
         {
             var entry = GetEntry(service, key);
             if (entry == null)
             {
-                entry = new ContainerEntry { Service = service, Key = key };
+                entry = new ContainerEntry {Service = service, Key = key};
                 _entries.Add(entry);
             }
 
@@ -371,10 +377,11 @@ namespace LogoFX.Practices.IoC
         }
 
         private object CreateArgument(ParameterInfo info, IParameter[] parameters)
-        {            
+        {
             if (parameters != null)
-            {                          
-                IParameter match = parameters.OfType<NamedParameter>().FirstOrDefault(t => t.ParameterName == info.Name);
+            {
+                IParameter match = parameters.OfType<NamedParameter>()
+                    .FirstOrDefault(t => t.ParameterName == info.Name);
                 if (match != null)
                 {
                     return match.ParameterValue;
@@ -384,15 +391,15 @@ namespace LogoFX.Practices.IoC
                 {
                     return match.ParameterValue;
                 }
-            }           
+            }
             return GetInstance(info.ParameterType, null);
         }
 
         private static ConstructorInfo SelectEligibleConstructor(Type type)
         {
             return (from c in type.GetTypeInfo().DeclaredConstructors
-                    orderby c.GetParameters().Length descending
-                    select c).FirstOrDefault();
+                orderby c.GetParameters().Length descending
+                select c).FirstOrDefault();
         }
 
         #endregion
@@ -403,7 +410,7 @@ namespace LogoFX.Practices.IoC
         /// <filterpriority>2</filterpriority>
         public virtual void Dispose()
         {
-            
-        }       
+
+        }
     }
 }

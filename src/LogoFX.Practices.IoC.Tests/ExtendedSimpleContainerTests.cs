@@ -74,7 +74,7 @@ namespace LogoFX.Practices.IoC.Tests
             int counter = 0;
 
             var container = new ExtendedSimpleContainer();
-            container.RegisterSignleton<ITestModule>((c, r) => new TestModule {Name = (++counter).ToString()});
+            container.RegisterSingleton<ITestModule>((c, r) => new TestModule {Name = (++counter).ToString()});
 
             var module = container.GetInstance(typeof(ITestModule), null);
             var actualModule = container.GetInstance(typeof(ITestModule), null);
