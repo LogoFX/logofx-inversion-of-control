@@ -1,14 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.4</TargetFramework>
+    <TargetFramework>netstandard1.3</TargetFramework>
     <AssemblyName>LogoFX.Practices.IoC.Modularity</AssemblyName>
     <RootNamespace>LogoFX.Practices.IoC.Modularity</RootNamespace>
+    <Version>1.0.11</Version>
+    <AssemblyVersion>1.0.11</AssemblyVersion>
+    <FileVersion>1.0.11</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\Bin\Release\netstandard1.4\</OutputPath>
-    <DocumentationFile>..\..\Bin\Release\netstandard1.4\netstandard1.4\LogoFX.Practices.IoC.Modularity.xml</DocumentationFile>
+    <OutputPath>..\..\Bin\netstandard1.3\Release</OutputPath>
+    <DocumentationFile>..\..\Bin\netstandard1.3\Release\netstandard1.3\LogoFX.Practices.IoC.Modularity.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
