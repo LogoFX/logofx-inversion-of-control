@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.3</TargetFramework>
+    <AssemblyName>LogoFX.Practices.IoC.Modularity</AssemblyName>
+    <RootNamespace>LogoFX.Practices.IoC.Modularity</RootNamespace>
+    <Version>1.1.0</Version>
+    <AssemblyVersion>1.1.0</AssemblyVersion>
+    <FileVersion>1.1.0</FileVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\Bin\netstandard1.3\Release</OutputPath>
+    <DocumentationFile>..\..\Bin\netstandard1.3\Release\netstandard1.3\LogoFX.Practices.IoC.Modularity.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\src\ISimpleCompositionModule.cs" Link="ISimpleCompositionModule.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LogoFX.Core" Version="1.0.8-rc2" />
+    <PackageReference Include="Solid.Practices.Modularity" Version="1.2.0-rc3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\LogoFX.Practices.IoC\netstandard1.3\LogoFX.Practices.IoC.NETStandard13.csproj" />
+  </ItemGroup>
+
+</Project>

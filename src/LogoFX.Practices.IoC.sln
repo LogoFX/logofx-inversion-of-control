@@ -1,15 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogoFX.Practices.IoC", "LogoFX.Practices.IoC\LogoFX.Practices.IoC.csproj", "{C7AE389E-C13C-4D52-9926-BE23E7ECAEA7}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogoFX.Practices.IoC.Tests", "LogoFX.Practices.IoC.Tests\LogoFX.Practices.IoC.Tests.csproj", "{4960E05A-C2E6-4EB1-A1AC-88198D752DCC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogoFX.Practices.IoC.Middleware", "LogoFX.Practices.IoC.Middleware\LogoFX.Practices.IoC.Middleware.csproj", "{825CA9B1-800E-4F5F-95FA-5248BD0AE402}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogoFX.Practices.IoC.Modularity.NET45", "LogoFX.Practices.IoC.Modularity\net45\LogoFX.Practices.IoC.Modularity.NET45.csproj", "{F08163B1-D6D0-4911-A707-C930EB978A5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogoFX.Practices.IoC.Modularity", "LogoFX.Practices.IoC.Modularity\LogoFX.Practices.IoC.Modularity.csproj", "{B57F95E2-759F-413B-845E-DCF31A003C01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogoFX.Practices.IoC.Modularity.NETStandard13", "LogoFX.Practices.IoC.Modularity\netstandard1.3\LogoFX.Practices.IoC.Modularity.NETStandard13.csproj", "{9F754A1F-39B2-4163-BD79-3245EBB98BDA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogoFX.Practices.IoC.NETStandard13", "LogoFX.Practices.IoC\netstandard1.3\LogoFX.Practices.IoC.NETStandard13.csproj", "{C1A355CA-98E8-4293-B147-517F7083D568}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogoFX.Practices.IoC.NET45", "LogoFX.Practices.IoC\net45\LogoFX.Practices.IoC.NET45.csproj", "{22F6B9DB-4FB1-42E1-98F6-9FBA42807CDD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogoFX.Practices.IoC.NETStandard13.Tests", "LogoFX.Practices.IoC.NETStandard13.Tests\LogoFX.Practices.IoC.NETStandard13.Tests.csproj", "{80144A96-A0A0-41F4-9BF0-5B465C4EFB0A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,22 +21,30 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C7AE389E-C13C-4D52-9926-BE23E7ECAEA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C7AE389E-C13C-4D52-9926-BE23E7ECAEA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C7AE389E-C13C-4D52-9926-BE23E7ECAEA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C7AE389E-C13C-4D52-9926-BE23E7ECAEA7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4960E05A-C2E6-4EB1-A1AC-88198D752DCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4960E05A-C2E6-4EB1-A1AC-88198D752DCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4960E05A-C2E6-4EB1-A1AC-88198D752DCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4960E05A-C2E6-4EB1-A1AC-88198D752DCC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{825CA9B1-800E-4F5F-95FA-5248BD0AE402}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{825CA9B1-800E-4F5F-95FA-5248BD0AE402}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{825CA9B1-800E-4F5F-95FA-5248BD0AE402}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{825CA9B1-800E-4F5F-95FA-5248BD0AE402}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B57F95E2-759F-413B-845E-DCF31A003C01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B57F95E2-759F-413B-845E-DCF31A003C01}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B57F95E2-759F-413B-845E-DCF31A003C01}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B57F95E2-759F-413B-845E-DCF31A003C01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F08163B1-D6D0-4911-A707-C930EB978A5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F08163B1-D6D0-4911-A707-C930EB978A5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F08163B1-D6D0-4911-A707-C930EB978A5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F08163B1-D6D0-4911-A707-C930EB978A5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F754A1F-39B2-4163-BD79-3245EBB98BDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F754A1F-39B2-4163-BD79-3245EBB98BDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F754A1F-39B2-4163-BD79-3245EBB98BDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F754A1F-39B2-4163-BD79-3245EBB98BDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1A355CA-98E8-4293-B147-517F7083D568}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1A355CA-98E8-4293-B147-517F7083D568}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1A355CA-98E8-4293-B147-517F7083D568}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1A355CA-98E8-4293-B147-517F7083D568}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22F6B9DB-4FB1-42E1-98F6-9FBA42807CDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22F6B9DB-4FB1-42E1-98F6-9FBA42807CDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22F6B9DB-4FB1-42E1-98F6-9FBA42807CDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22F6B9DB-4FB1-42E1-98F6-9FBA42807CDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80144A96-A0A0-41F4-9BF0-5B465C4EFB0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80144A96-A0A0-41F4-9BF0-5B465C4EFB0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80144A96-A0A0-41F4-9BF0-5B465C4EFB0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80144A96-A0A0-41F4-9BF0-5B465C4EFB0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
