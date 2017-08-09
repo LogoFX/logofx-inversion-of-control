@@ -19,8 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="LogoFX.Core" Version="1.0.8-rc2" />
-    <PackageReference Include="Solid.Practices.Modularity" Version="1.2.0-rc3" />
+    <PackageReference Include="LogoFX.Core" Version="1.1.0" />
+    <PackageReference Include="Solid.Practices.Modularity" Version="1.2.0" />
   </ItemGroup>
 
   <ItemGroup>
