@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{80144A96-A0A0-41F4-9BF0-5B465C4EFB0A}</ProjectGuid>
+    <ProjectGuid>{DFD67CD9-6E12-427C-BCCA-DEE5A3522DC2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LogoFX.Practices.IoC.NETStandard13.Tests</RootNamespace>
-    <AssemblyName>LogoFX.Practices.IoC.NETStandard13.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <RootNamespace>LogoFX.Practices.IoC.NETStandard20.Tests</RootNamespace>
+    <AssemblyName>LogoFX.Practices.IoC.NETStandard20.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -70,16 +69,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\LogoFX.Practices.IoC\netstandard1.3\LogoFX.Practices.IoC.NETStandard13.csproj">
-      <Project>{c1a355ca-98e8-4293-b147-517f7083d568}</Project>
-      <Name>LogoFX.Practices.IoC.NETStandard13</Name>
+    <ProjectReference Include="..\LogoFX.Practices.IoC\netstandard2.0\LogoFX.Practices.IoC.NETStandard20.csproj">
+      <Project>{bb15d3de-cc2b-4508-96fd-9206c301f79f}</Project>
+      <Name>LogoFX.Practices.IoC.NETStandard20</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
