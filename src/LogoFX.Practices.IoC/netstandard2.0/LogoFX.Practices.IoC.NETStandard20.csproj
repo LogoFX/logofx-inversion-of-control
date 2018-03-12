@@ -6,6 +6,8 @@
     <RootNamespace>LogoFX.Practices.IoC</RootNamespace>
     <AssemblyVersion>1.1.1.0</AssemblyVersion>
     <FileVersion>1.1.1.0</FileVersion>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>LogoFX.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -23,7 +25,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="LogoFX.Core" Version="1.1.1-rc1" />
+    <Reference Include="LogoFX.Core">
+      <HintPath>..\..\Lib\LogoFX.Core.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
