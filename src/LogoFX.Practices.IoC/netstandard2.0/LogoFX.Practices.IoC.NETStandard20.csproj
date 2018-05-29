@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -8,9 +8,13 @@
     <FileVersion>1.1.1.0</FileVersion>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <OutputPath>..\..\bin\netstandard2.0\Release</OutputPath>
-    <DocumentationFile>..\..\bin\netstandard2.0\Release\netstandard2.0\LogoFX.Practices.IoC.xml</DocumentationFile>
+    <DocumentationFile>..\..\bin\netstandard2.0\Release\LogoFX.Practices.IoC.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="LogoFX.Core" Version="1.1.1-rc1" />
+    <PackageReference Include="LogoFX.Core" Version="1.1.1-rc3" />
   </ItemGroup>
 
 </Project>
