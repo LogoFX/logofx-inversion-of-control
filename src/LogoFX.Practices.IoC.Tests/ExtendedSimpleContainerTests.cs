@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using System.Linq;
+using FluentAssertions;
 using Xunit;
 
 namespace LogoFX.Practices.IoC.Tests
@@ -49,7 +50,8 @@ namespace LogoFX.Practices.IoC.Tests
             container.RegisterHandler(typeof(ITestModule), null, (c, r) => modules[1]);
             var actualModules = container.GetAllInstances(typeof(ITestModule));
 
-            actualModules.ShouldAllBeEquivalentTo(modules);
+            actualModules.Should().BeSubsetOf(modules);
+            modules.Should().BeSubsetOf(actualModules);
         }
 
         [Fact]
