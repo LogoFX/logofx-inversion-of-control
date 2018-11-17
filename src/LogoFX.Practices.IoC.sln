@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogoFX.Practices.IoC.NETStandard20", "LogoFX.Practices.IoC\netstandard2.0\LogoFX.Practices.IoC.NETStandard20.csproj", "{BB15D3DE-CC2B-4508-96FD-9206C301F79F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogoFX.Practices.IoC", "LogoFX.Practices.IoC\LogoFX.Practices.IoC.csproj", "{8D048EA5-CF10-4CA1-909D-03655E1042F5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogoFX.Practices.IoC.Modularity.NETStandard20", "LogoFX.Practices.IoC.Modularity\netstandard2.0\LogoFX.Practices.IoC.Modularity.NETStandard20.csproj", "{107C8F69-23DD-4DCE-9CAA-B09E78C0ECE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogoFX.Practices.IoC.Modularity", "LogoFX.Practices.IoC.Modularity\LogoFX.Practices.IoC.Modularity.csproj", "{3FBC6C36-1F84-4C95-88DE-FB1CFC9D4E18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogoFX.Practices.IoC.NETStandard20.Tests", "LogoFX.Practices.IoC.NETStandard20.Tests\LogoFX.Practices.IoC.NETStandard20.Tests.csproj", "{DFD67CD9-6E12-427C-BCCA-DEE5A3522DC2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogoFX.Practices.IoC.Tests", "LogoFX.Practices.IoC.Tests\LogoFX.Practices.IoC.Tests.csproj", "{DFD67CD9-6E12-427C-BCCA-DEE5A3522DC2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,14 +15,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BB15D3DE-CC2B-4508-96FD-9206C301F79F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BB15D3DE-CC2B-4508-96FD-9206C301F79F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BB15D3DE-CC2B-4508-96FD-9206C301F79F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BB15D3DE-CC2B-4508-96FD-9206C301F79F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{107C8F69-23DD-4DCE-9CAA-B09E78C0ECE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{107C8F69-23DD-4DCE-9CAA-B09E78C0ECE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{107C8F69-23DD-4DCE-9CAA-B09E78C0ECE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{107C8F69-23DD-4DCE-9CAA-B09E78C0ECE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D048EA5-CF10-4CA1-909D-03655E1042F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D048EA5-CF10-4CA1-909D-03655E1042F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D048EA5-CF10-4CA1-909D-03655E1042F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D048EA5-CF10-4CA1-909D-03655E1042F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FBC6C36-1F84-4C95-88DE-FB1CFC9D4E18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FBC6C36-1F84-4C95-88DE-FB1CFC9D4E18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FBC6C36-1F84-4C95-88DE-FB1CFC9D4E18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FBC6C36-1F84-4C95-88DE-FB1CFC9D4E18}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DFD67CD9-6E12-427C-BCCA-DEE5A3522DC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DFD67CD9-6E12-427C-BCCA-DEE5A3522DC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFD67CD9-6E12-427C-BCCA-DEE5A3522DC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
