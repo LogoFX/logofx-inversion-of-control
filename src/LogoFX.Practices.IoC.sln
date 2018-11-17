@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogoFX.Practices.IoC", "Log
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogoFX.Practices.IoC.Modularity", "LogoFX.Practices.IoC.Modularity\LogoFX.Practices.IoC.Modularity.csproj", "{3FBC6C36-1F84-4C95-88DE-FB1CFC9D4E18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogoFX.Practices.IoC.Tests", "LogoFX.Practices.IoC.Tests\LogoFX.Practices.IoC.Tests.csproj", "{DFD67CD9-6E12-427C-BCCA-DEE5A3522DC2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogoFX.Practices.IoC.Tests", "LogoFX.Practices.IoC.Tests\LogoFX.Practices.IoC.Tests.csproj", "{11D66AC9-FE30-4088-8306-670518D99480}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{3FBC6C36-1F84-4C95-88DE-FB1CFC9D4E18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FBC6C36-1F84-4C95-88DE-FB1CFC9D4E18}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3FBC6C36-1F84-4C95-88DE-FB1CFC9D4E18}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DFD67CD9-6E12-427C-BCCA-DEE5A3522DC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DFD67CD9-6E12-427C-BCCA-DEE5A3522DC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DFD67CD9-6E12-427C-BCCA-DEE5A3522DC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DFD67CD9-6E12-427C-BCCA-DEE5A3522DC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11D66AC9-FE30-4088-8306-670518D99480}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11D66AC9-FE30-4088-8306-670518D99480}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11D66AC9-FE30-4088-8306-670518D99480}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11D66AC9-FE30-4088-8306-670518D99480}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
