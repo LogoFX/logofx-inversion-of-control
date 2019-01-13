@@ -20,7 +20,7 @@
 
   <ItemGroup>
     <PackageReference Include="LogoFX.Core" Version="2.0.0-rc1" />
-    <PackageReference Include="Solid.Practices.Modularity" Version="2.0.0-rc1" />
+    <PackageReference Include="Solid.Practices.Modularity" Version="2.0.0" />
   </ItemGroup> 
 
   <ItemGroup>
