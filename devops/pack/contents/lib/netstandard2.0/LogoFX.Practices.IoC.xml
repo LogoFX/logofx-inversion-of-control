@@ -1,0 +1,264 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LogoFX.Practices.IoC</name>
+    </assembly>
+    <members>
+        <member name="T:LogoFX.Practices.IoC.ExtendedSimpleContainer">
+            <summary>
+            Represents <see cref="T:LogoFX.Practices.IoC.SimpleContainer" /> with advanced capabilities.
+            </summary>
+        </member>
+        <member name="M:LogoFX.Practices.IoC.ExtendedSimpleContainer.RegisterAuto(System.Type,System.String,System.Type)">
+            <summary>
+            Autoregisters the specified service using optional key and implementation type.
+            </summary>
+            <param name="service">The service.</param>
+            <param name="key">The key.</param>
+            <param name="implementation">The implementation.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">kind</exception>
+        </member>
+        <member name="M:LogoFX.Practices.IoC.ExtendedSimpleContainer.ActivateInstance(System.Type,System.Object[])">
+            <summary>
+              Creates an instance of the type with the specified constructor arguments.
+            </summary>
+            <param name = "type">The type.</param>
+            <param name = "args">The constructor args.</param>
+            <returns>The created instance.</returns>
+        </member>
+        <member name="M:LogoFX.Practices.IoC.ExtendedSimpleContainer.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="T:LogoFX.Practices.IoC.IParameter">
+            <summary>
+            Represents parameter for dependency resolution.
+            </summary>
+        </member>
+        <member name="P:LogoFX.Practices.IoC.IParameter.ParameterValue">
+            <summary>
+            Gets the parameter value.
+            </summary>
+            <value>
+            The parameter value.
+            </value>
+        </member>
+        <member name="T:LogoFX.Practices.IoC.NamedParameter">
+            <summary>
+            Represents named parameter for dependency resolution.
+            </summary>
+        </member>
+        <member name="M:LogoFX.Practices.IoC.NamedParameter.#ctor(System.String,System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:LogoFX.Practices.IoC.NamedParameter"/> class.
+            </summary>
+            <param name="parameterName">Name of the parameter.</param>
+            <param name="parameterValue">The parameter value.</param>
+        </member>
+        <member name="P:LogoFX.Practices.IoC.NamedParameter.ParameterName">
+            <summary>
+            Gets the name of the parameter.
+            </summary>
+            <value>
+            The name of the parameter.
+            </value>
+        </member>
+        <member name="P:LogoFX.Practices.IoC.NamedParameter.ParameterValue">
+            <summary>
+            Gets the parameter value.
+            </summary>
+            <value>
+            The parameter value.
+            </value>
+        </member>
+        <member name="T:LogoFX.Practices.IoC.SimpleContainer">
+            <summary>
+             A simple IoC container.
+            </summary>
+        </member>
+        <member name="M:LogoFX.Practices.IoC.SimpleContainer.#ctor">
+            <summary>
+              Initializes a new instance of the <see cref = "T:LogoFX.Practices.IoC.SimpleContainer" /> class.
+            </summary>
+        </member>
+        <member name="M:LogoFX.Practices.IoC.SimpleContainer.RegisterPerLifetime(System.Func{System.Object},System.Type,System.String,System.Type)">
+            <summary>
+            Registers the service per lifetime of an external object.
+            </summary>
+            <param name="lifeTime">The lifetime function of an external object.</param>
+            <param name="service">The service.</param>
+            <param name="key">The key.</param>
+            <param name="implementation">The implementation.</param>
+        </member>
+        <member name="M:LogoFX.Practices.IoC.SimpleContainer.RegisterInstance(System.Type,System.String,System.Object)">
+            <summary>
+            Registers the instance of dependency
+            </summary>
+            <param name="service">Type of dependency</param>
+            <param name="key">Optional dependency key, provide null if not needed</param>
+            <param name="implementation">The instance of dependency</param>
+        </member>
+        <member name="M:LogoFX.Practices.IoC.SimpleContainer.RegisterInstance``1(System.String,System.Object)">
+            <summary>
+            Registers the instance of dependency
+            </summary>
+            <typeparam name="TService">Type of dependency</typeparam>
+            <param name="key">Optional dependency key, provide null if not needed</param>
+            <param name="implementation">The instance of dependency</param>
+        </member>
+        <member name="M:LogoFX.Practices.IoC.SimpleContainer.RegisterPerRequest(System.Type,System.String,System.Type)">
+            <summary>
+            Registers the dependency so that a new instance is created on every request.
+            </summary>
+            <param name="service">Type of dependency declaration</param>
+            <param name="key">Optional dependency key, provide null if not needed</param>
+            <param name="implementation">Type of dependency implementation</param>
+        </member>
+        <member name="M:LogoFX.Practices.IoC.SimpleContainer.RegisterPerRequest``1(System.String,System.Type)">
+            <summary>
+            Registers the dependency so that a new instance is created on every request.
+            </summary>
+            <typeparam name="TService">Type of dependency declaration</typeparam>
+            <param name="key">Optional dependency key, provide null if not needed</param>
+            <param name="implementation">Type of dependency implementation</param>
+        </member>
+        <member name="M:LogoFX.Practices.IoC.SimpleContainer.RegisterSingleton(System.Type,System.String,System.Type)">
+            <summary>
+            Registers dependency as singleton
+            </summary>
+            <param name="service">Type of dependency declaration</param>
+            <param name="key">Optional dependency key, provide null if not needed</param>
+            <param name="implementation">Type of dependency implementation</param>
+        </member>
+        <member name="M:LogoFX.Practices.IoC.SimpleContainer.RegisterSingleton(System.Type,System.String,System.Func{LogoFX.Practices.IoC.SimpleContainer,LogoFX.Practices.IoC.IParameter[],System.Object})">
+            <summary>
+            Registers a custom handler for resolving dependencies from the container as singleton.
+            </summary>
+            <param name="service">Type of dependency declaration</param>
+            <param name="key">Optional dependency key, provide null if not needed</param>
+            <param name="handler">Resolution handler</param>
+        </member>
+        <member name="M:LogoFX.Practices.IoC.SimpleContainer.RegisterSingleton``1(System.Func{LogoFX.Practices.IoC.SimpleContainer,LogoFX.Practices.IoC.IParameter[],System.Object})">
+            <summary>
+            Registers a custom handler for resolving dependencies from the container as singleton.
+            </summary>
+            <typeparam name="TService">Type of dependency declaration</typeparam>
+            <param name="handler">Resolution handler</param>
+        </member>
+        <member name="M:LogoFX.Practices.IoC.SimpleContainer.RegisterHandler(System.Type,System.String,System.Func{LogoFX.Practices.IoC.SimpleContainer,LogoFX.Practices.IoC.IParameter[],System.Object})">
+            <summary>
+            Registers a custom handler for resolving dependencies from the container.
+            </summary>
+            <param name="service">Type of dependency declaration</param>
+            <param name="key">Optional dependency key, provide null if not needed</param>
+            <param name="handler">Resolution handler</param>
+        </member>
+        <member name="M:LogoFX.Practices.IoC.SimpleContainer.RegisterHandler``1(System.String,System.Func{LogoFX.Practices.IoC.SimpleContainer,LogoFX.Practices.IoC.IParameter[],System.Object})">
+            <summary>
+            Registers a custom handler for resolving dependencies from the container.
+            </summary>
+            <typeparam name="TService">Type of dependency declaration</typeparam>
+            <param name="key">Optional dependency key, provide null if not needed</param>
+            <param name="handler">Resolution handler</param>
+        </member>
+        <member name="M:LogoFX.Practices.IoC.SimpleContainer.HasHandler(System.Type,System.String)">
+            <summary>
+            Determines if a handler for the dependency/key has previously been registered.
+            </summary>
+            <param name="service">Type of dependency</param>
+            <param name="key">Optional dependency key, provide null if not needed</param>
+            <returns>True if a handler is registered, false otherwise.</returns>
+        </member>
+        <member name="M:LogoFX.Practices.IoC.SimpleContainer.GetInstance(System.Type,System.String,LogoFX.Practices.IoC.IParameter[])">
+            <summary>
+            Resolves the dependency by its type/key and optional parameters
+            </summary>
+            <param name="service">Type of dependency</param>
+            <param name="key">Optional dependency key, provide null if not needed</param>
+            <param name="parameters">optional dynamically injected resolution parameters</param>
+            <returns>The instance of dependency, or null if it cannot be resolved</returns>
+        </member>
+        <member name="M:LogoFX.Practices.IoC.SimpleContainer.GetAllInstances(System.Type)">
+            <summary>
+            Resolves all instances of given dependency type
+            </summary>
+            <param name="service">Type of dependency</param>
+            <returns>All the instances or an empty enumerable if none can be resolved.</returns>
+        </member>
+        <member name="M:LogoFX.Practices.IoC.SimpleContainer.BuildUp(System.Object)">
+            <summary>
+            Pushes dependencies into an existing instance based on interface properties with setters.
+            </summary>
+            <param name="instance">The instance.</param>
+        </member>
+        <member name="M:LogoFX.Practices.IoC.SimpleContainer.CreateChildContainer">
+            <summary>
+            Creates a child simple container.
+            </summary>
+            <returns>A new container.</returns>
+        </member>
+        <member name="E:LogoFX.Practices.IoC.SimpleContainer.Activated">
+            <summary>
+            Occurs when a new instance is created.
+            </summary>
+        </member>
+        <member name="M:LogoFX.Practices.IoC.SimpleContainer.BuildInstance(System.Type,LogoFX.Practices.IoC.IParameter[])">
+            <summary>
+             Actually does the work of creating the instance and satisfying its constructor dependencies.
+            </summary>
+            <param name = "type">The type.</param>
+            <param name="parameters">dynamically injected parameters</param>
+            <returns></returns>
+        </member>
+        <member name="M:LogoFX.Practices.IoC.SimpleContainer.ActivateInstance(System.Type,System.Object[])">
+            <summary>
+              Creates an instance of the type with the specified constructor arguments.
+            </summary>
+            <param name = "type">The type.</param>
+            <param name = "args">The constructor args.</param>
+            <returns>The created instance.</returns>
+        </member>
+        <member name="M:LogoFX.Practices.IoC.SimpleContainer.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="T:LogoFX.Practices.IoC.SingletonAttribute">
+            <summary>
+            Use to mark the types to be registered as singleton
+            during autoregistration using <see cref="T:LogoFX.Practices.IoC.ExtendedSimpleContainer"/>.
+            </summary>
+        </member>
+        <member name="T:LogoFX.Practices.IoC.TypedParameter">
+            <summary>
+            Represents typed parameter for dependency resolution.
+            </summary>
+        </member>
+        <member name="M:LogoFX.Practices.IoC.TypedParameter.#ctor(System.Type,System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:LogoFX.Practices.IoC.TypedParameter"/> class.
+            </summary>
+            <param name="parameterType">Type of the parameter.</param>
+            <param name="parameterValue">The parameter value.</param>
+        </member>
+        <member name="P:LogoFX.Practices.IoC.TypedParameter.ParameterType">
+            <summary>
+            Gets the type of the parameter.
+            </summary>
+            <value>
+            The type of the parameter.
+            </value>
+        </member>
+        <member name="P:LogoFX.Practices.IoC.TypedParameter.ParameterValue">
+            <summary>
+            Gets the parameter value.
+            </summary>
+            <value>
+            The parameter value.
+            </value>
+        </member>
+    </members>
+</doc>
