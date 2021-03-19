@@ -1,3 +1,6 @@
+init:
+  - dotnet tool install --global SpecFlow.Plus.LivingDoc.CLI
+
 configuration: Release
 
 before_build:
