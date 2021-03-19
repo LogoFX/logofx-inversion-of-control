@@ -16,7 +16,7 @@ test_script:
   - test-all.bat
   - cd ..\..\
 
-  artifacts:
-  
-  - name: Moq Support Living Documentation
+artifacts:
+
+  - name: Living Documentation
     path: .\src\LogoFX.Practices.IoC.Specs\bin\Release\LivingDoc.html
