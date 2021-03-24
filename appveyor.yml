@@ -21,12 +21,13 @@ test_script:
   - cd ..\..\
 
 after_test:
-  - capture-website https://wordpress.org/ --output=wordpress.png
+  - cd .\src\LogoFX.Practices.IoC.Specs\bin\Release
+  - capture-website LivingDoc.html --output=LivingDoc.png
 
 artifacts:
 
   - name: Living Documentation
     path: .\src\LogoFX.Practices.IoC.Specs\bin\Release\LivingDoc.html
-  - name: test
-    path: .\wordpress.png
+  - name: Liging Documentation screenshot
+    path: .\src\LogoFX.Practices.IoC.Specs\bin\Release\LivingDoc.png
   
