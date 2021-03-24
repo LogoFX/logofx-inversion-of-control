@@ -20,7 +20,13 @@ test_script:
   - test-all.bat
   - cd ..\..\
 
+after_test:
+  - capture-website https://wordpress.org/ --output=wordpress.png
+
 artifacts:
 
   - name: Living Documentation
     path: .\src\LogoFX.Practices.IoC.Specs\bin\Release\LivingDoc.html
+  - name: test
+    path: .\wordpress.png
+  
