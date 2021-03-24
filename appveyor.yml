@@ -1,5 +1,6 @@
 init:
   - dotnet tool install --global SpecFlow.Plus.LivingDoc.CLI
+  - npm install --global capture-website-cli
 
 configuration: Release
 
