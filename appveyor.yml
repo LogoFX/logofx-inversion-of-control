@@ -28,6 +28,6 @@ artifacts:
 
   - name: Living Documentation
     path: .\src\LogoFX.Practices.IoC.Specs\bin\Release\LivingDoc.html
-  - name: Liging Documentation screenshot
+  - name: Living Documentation screenshot
     path: .\src\LogoFX.Practices.IoC.Specs\bin\Release\LivingDoc.png
   
