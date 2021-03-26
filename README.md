@@ -5,7 +5,8 @@ An implementation of Inversion-Of-Control (DI) container
 
 <img src=https://img.shields.io/nuget/dt/LogoFX.Practices.IoC>
 
-## Living Documentation
-[<img src=https://ci.appveyor.com/api/projects/LogoFX/logofx-inversion-of-control/artifacts/src/LogoFX.Practices.IoC.Specs/bin/Release/LivingDoc.png>](https://ci.appveyor.com/api/projects/LogoFX/logofx-inversion-of-control/artifacts/src/LogoFX.Practices.IoC.Specs/bin/Release/LivingDoc.html)
+[Living Documentation](https://ci.appveyor.com/api/projects/LogoFX/logofx-inversion-of-control/artifacts/src/LogoFX.Practices.IoC.Specs/bin/Release/LivingDoc.html)
+
+<img src=https://ci.appveyor.com/api/projects/LogoFX/logofx-inversion-of-control/artifacts/src/LogoFX.Practices.IoC.Specs/bin/Release/LivingDoc.png>
 
 [Get package](https://www.nuget.org/packages/LogoFX.Practices.IoC)
