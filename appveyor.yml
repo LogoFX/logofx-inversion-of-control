@@ -23,7 +23,7 @@ test_script:
   - cd ../../
 
 after_test:
-  - cd ../devops
+  - cd ./devops
   - cd pack
   - pack
   - cd ../..
