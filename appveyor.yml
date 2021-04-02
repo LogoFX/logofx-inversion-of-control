@@ -1,3 +1,5 @@
+version: 2.2.0.{build}
+
 init:
   - dotnet tool install --global SpecFlow.Plus.LivingDoc.CLI
   - npm install --global capture-website-cli
@@ -12,22 +14,27 @@ image: Visual Studio 2019
 
 build:
   verbosity: minimal
-  project: .\src\LogoFX.Practices.IoC.sln
+  project: ./src/LogoFX.Practices.IoC.sln
 
 test_script:
   - cd
-  - cd ..\devops\test
+  - cd ../devops/test
   - test-all.bat
-  - cd ..\..\
+  - cd ../../
 
 after_test:
-  - cd .\src\LogoFX.Practices.IoC.Specs\bin\Release
+  - cd ../devops
+  - cd pack
+  - pack
+  - cd ../..
+  - cd ./src/LogoFX.Practices.IoC.Specs/bin/Release
   - capture-website LivingDoc.html --output=LivingDoc.png
 
 artifacts:
-
+  - name: Packages
+    path: ./output/*.nupkg
   - name: Living Documentation
-    path: .\src\LogoFX.Practices.IoC.Specs\bin\Release\LivingDoc.html
+    path: ./src/LogoFX.Practices.IoC.Specs/bin/Release/LivingDoc.html
   - name: Living Documentation screenshot
-    path: .\src\LogoFX.Practices.IoC.Specs\bin\Release\LivingDoc.png
+    path: ./src/LogoFX.Practices.IoC.Specs/bin/Release/LivingDoc.png
   
