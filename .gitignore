@@ -234,3 +234,6 @@ _Pvt_Extensions
 # Generated packages and intermediate output
 output
 devops/pack/**/contents/lib
+
+# SpecFlow .feature.cs generated files
+**/*.feature.cs
