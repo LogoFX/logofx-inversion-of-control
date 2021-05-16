@@ -15,7 +15,7 @@
     <releaseNotes>Updated dependent packages</releaseNotes>
     <dependencies>
       <dependency id="LogoFX.Core" version="2.2.0-rc2" />
-      <dependency id="Solid.Practices.Modularity" version="2.3.0-rc1" />
+      <dependency id="Solid.Practices.Modularity" version="2.3.0" />
     </dependencies>
   </metadata>
 </package>
