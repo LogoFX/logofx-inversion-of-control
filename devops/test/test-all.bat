@@ -1,0 +1,1 @@
+call test-specs-single.bat LogoFX.Practices.IoC.Specs

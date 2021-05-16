@@ -3,7 +3,7 @@ using System.Linq;
 using FluentAssertions;
 using TechTalk.SpecFlow;
 
-namespace LogoFX.Practices.IoC.Tests
+namespace LogoFX.Practices.IoC.Specs
 {
     [Binding]
     internal sealed class ExtendedSimpleContainerSteps

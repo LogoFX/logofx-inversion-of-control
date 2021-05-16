@@ -1,25 +1,21 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">  
-
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <Version>2.1.0</Version>
+    <Version>2.2.0</Version>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\Bin\netstandard2.0\Release</OutputPath>
-    <DocumentationFile>..\Bin\netstandard2.0\Release\LogoFX.Practices.IoC.Modularity.xml</DocumentationFile>
-    <DebugType>full</DebugType>
+    <OutputPath>..\Bin\netstandard\Release</OutputPath>
+    <DocumentationFile>..\Bin\netstandard\Release\LogoFX.Practices.IoC.Modularity.xml</DocumentationFile>
+    <EmbedAllSources>True</EmbedAllSources>
+    <DebugType>embedded</DebugType>
     <DebugSymbols>true</DebugSymbols>
-  </PropertyGroup> 
-
+  </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="LogoFX.Core" Version="2.1.0" />
-    <PackageReference Include="Solid.Practices.Modularity" Version="2.2.0" />
-  </ItemGroup> 
-
+    <PackageReference Include="LogoFX.Core" Version="2.2.0-rc2" />
+    <PackageReference Include="Solid.Practices.Modularity" Version="2.3.0" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LogoFX.Practices.IoC\LogoFX.Practices.IoC.csproj" />
   </ItemGroup>
-
 </Project>
