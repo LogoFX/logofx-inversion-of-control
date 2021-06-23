@@ -12,8 +12,8 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="LogoFX.Core" Version="2.2.0-rc2" />
-    <PackageReference Include="Solid.Practices.Modularity" Version="2.3.0" />
+    <PackageReference Include="LogoFX.Core" Version="2.2.0-rc3" />
+    <PackageReference Include="Solid.Practices.Modularity" Version="2.3.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LogoFX.Practices.IoC\LogoFX.Practices.IoC.csproj" />
