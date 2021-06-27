@@ -2,20 +2,22 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata>
     <id>LogoFX.Practices.IoC</id>
-    <version>2.2.0-rc3</version>
+    <version>2.2.0</version>
     <title>LogoFX.Practices.IoC</title>
     <authors>Gennady Verdel,David Kossoglyad,Dmitry Bublik,Vlad Spivak</authors>
     <owners>Gennady Verdel</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <licenseUrl>https://github.com/LogoFX/logofx-inversion-of-control/blob/master/LogoFX</licenseUrl>
+    <licenseUrl>https://github.com/LogoFX/logofx-inversion-of-control/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/LogoFX/logofx-inversion-of-control</projectUrl>
     <iconUrl>https://github.com/LogoFX/logofx-assets/blob/master/icons/icon.png?raw=true</iconUrl>
     <description>LogoFX IoC containing an implementation of inversion-of-control container</description>
     <summary>LogoFX IoC containing an implementation of inversion-of-control container</summary>
-    <releaseNotes>Updated dependent packages</releaseNotes>
+    <releaseNotes></releaseNotes>
     <dependencies>
-      <dependency id="LogoFX.Core" version="2.2.0-rc3" />
+      <dependency id="LogoFX.Core" version="2.2.0" />
       <dependency id="Solid.Practices.Modularity" version="2.3.1" />
     </dependencies>
+    <tags>framework logofx dotnet</tags>
+    <repository type="Open Source" url="https://github.com/LogoFX/logofx-inversion-of-control" />
   </metadata>
 </package>
