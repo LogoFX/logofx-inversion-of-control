@@ -409,8 +409,6 @@ namespace LogoFX.Practices.IoC
         /// </summary>
         /// <filterpriority>2</filterpriority>
         public virtual void Dispose()
-        {
-
-        }
+        {}
     }
 }
