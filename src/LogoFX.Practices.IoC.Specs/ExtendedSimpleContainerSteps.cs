@@ -111,7 +111,7 @@ namespace LogoFX.Practices.IoC.Specs
         [Then(@"The collection of dependencies is equivalent to the collection of instances")]
         public void ThenTheCollectionOfDependenciesIsEquivalentToTheCollectionOfInstances()
         {
-            var dependencies = _scenarioDataStoreBase.Dependencies;
+            var dependencies = _scenarioDataStoreBase.Dependencies.OfType<ITestModule>().ToArray();
             var modules = new[]
                 {_scenarioDataStoreBase.FirstModule, _scenarioDataStoreBase.SecondModule};
             dependencies.Should().BeSubsetOf(modules);
