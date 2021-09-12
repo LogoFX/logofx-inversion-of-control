@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata>
     <id>LogoFX.Practices.IoC</id>
-    <version>2.2.1</version>
+    <version>2.2.2</version>
     <title>LogoFX.Practices.IoC</title>
     <authors>Gennady Verdel,David Kossoglyad,Dmitry Bublik,Vlad Spivak</authors>
     <owners>Gennady Verdel</owners>
@@ -15,8 +15,8 @@
     <releaseNotes>
     </releaseNotes>
     <dependencies>
-      <dependency id="LogoFX.Core" version="2.2.1" />
-      <dependency id="Solid.Practices.Modularity" version="2.3.1" />
+      <dependency id="LogoFX.Core" version="2.2.2" />
+      <dependency id="Solid.Practices.Modularity" version="2.3.2" />
     </dependencies>
     <tags>framework logofx dotnet</tags>
     <repository type="Open Source" url="https://github.com/LogoFX/logofx-inversion-of-control" />
