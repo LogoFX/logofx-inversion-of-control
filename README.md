@@ -10,3 +10,5 @@ An implementation of Inversion-Of-Control (DI) container
 [Living Documentation](https://ci.appveyor.com/api/projects/LogoFX/logofx-inversion-of-control/artifacts/src/LogoFX.Practices.IoC.Specs/bin/Release/LivingDoc.html)
 
 [Get package](https://www.nuget.org/packages/LogoFX.Practices.IoC)
+
+This repository is archived. Its functionality has been moved to https://github.com/LogoFX/core
